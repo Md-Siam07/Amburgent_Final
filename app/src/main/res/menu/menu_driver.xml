@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:id="@+id/profile"
+        android:checkableBehavior="single">
+        <item android:id="@+id/prof_item"
+            android:icon="@drawable/ic_profile"
+            android:title="Profile"
+            >
+
+        </item>
+    </group>
+
+    <group android:id="@+id/trans_his"
+        android:checkableBehavior="single">
+        <item android:id="@+id/trans_item"
+            android:icon="@drawable/ic_trans_his"
+            android:title="Transaction History"
+            >
+
+        </item>
+    </group>
+
+    <group android:id="@+id/recent_rides"
+        android:checkableBehavior="single">
+        <item android:id="@+id/rides_item"
+            android:icon="@drawable/ic_rides"
+            android:title="Recent Rides"
+            >
+
+        </item>
+    </group>
+
+</menu>

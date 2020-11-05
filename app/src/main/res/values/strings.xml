@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Amburgent</string>
+    <string name="facebook_app_id">380695723378404</string>
+    <string name="fb_login_protocol_scheme">fb383902972761324</string>
+    <string name="navigation_drawer_open">open_nav</string>
+    <string name="navigation_drawer_close">close_nav</string>
+</resources>

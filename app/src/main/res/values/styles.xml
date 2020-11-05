@@ -1,0 +1,53 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="NavigationView"  parent="Base.Theme.AppCompat">
+        <item name="android:listDivider">@color/white</item>
+    </style>
+
+    <style name="username">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #B0F2DADA
+        </item>
+
+    </style>
+
+
+    <!-- strings.xml -->
+    <string name="username">
+
+Username
+</string>
+
+    <style name="phone_numbe">
+
+        <item name="android:textSize">
+            17sp
+        </item>
+
+        <item name="android:textColor">
+            #B0F2DADA
+        </item>
+
+    </style>
+
+
+    <!-- strings.xml -->
+    <string name="phone_numbe">
+
+Phone Number
+</string>
+
+
+
+</resources>

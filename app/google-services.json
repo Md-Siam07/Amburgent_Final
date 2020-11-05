@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "937362775932",
+    "firebase_url": "https://amburgent-86506.firebaseio.com",
+    "project_id": "amburgent-86506",
+    "storage_bucket": "amburgent-86506.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937362775932:android:655711aac5e7ae97b8cef9",
+        "android_client_info": {
+          "package_name": "com.example.amburgent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "937362775932-rus548v10elll3dv1jalg75jidoblpsc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.amburgent",
+            "certificate_hash": "b891749d7633a84d77d481f2b7ec44359782c8a4"
+          }
+        },
+        {
+          "client_id": "937362775932-b0t6qhumf1s0eie78sbh0a250rssoijh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhRmxMGg8l5SDVqTOc7WFm2M47eui9Ze4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937362775932-b0t6qhumf1s0eie78sbh0a250rssoijh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

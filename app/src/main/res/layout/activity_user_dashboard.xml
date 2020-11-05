@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+
+    >
+
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:openDrawer="start">
+
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/activity_main2"></include>
+
+
+        </FrameLayout>
+
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="230dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@drawable/nav_bg"
+            app:itemIconTint="#92FFFFFF"
+            app:headerLayout="@layout/header"
+            app:menu="@menu/menu_icon"
+            app:itemIconSize="35dp"
+            app:itemTextColor="#92FFFFFF"
+            android:theme="@style/NavigationView"
+            android:fitsSystemWindows="true">
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <!--                      <LinearLayout-->
+                <!--                          android:layout_width="match_parent"-->
+                <!--                          android:layout_height="match_parent"-->
+                <!--                          android:orientation="vertical"-->
+                <!--                          >-->
+
+                <!--                          <LinearLayout-->
+                <!--                              android:layout_width="match_parent"-->
+                <!--                              android:layout_height="170dp"-->
+                <!--                              android:padding="20dp"-->
+                <!--                              android:orientation="vertical">-->
+
+                <!--                              <de.hdodenhof.circleimageview.CircleImageView-->
+                <!--                                  android:src="@drawable/ic_user_icon"-->
+                <!--                                  android:layout_width="match_parent"-->
+                <!--                                  android:layout_height="match_parent"-->
+                <!--                                  android:layout_marginTop="20dp"-->
+                <!--                                  >-->
+                <!--                              </de.hdodenhof.circleimageview.CircleImageView>-->
+
+                <!--                          </LinearLayout>-->
+
+                <!--                          <View-->
+                <!--                              android:layout_width="match_parent"-->
+                <!--                              android:layout_height="1.5dp"-->
+                <!--                              android:background="#63BE9F9F"-->
+                <!--                              android:layout_marginRight="14dp"-->
+                <!--                              android:layout_marginLeft="14dp"-->
+
+                <!--                              />-->
+
+                <!--                          <LinearLayout-->
+                <!--                              android:layout_width="match_parent"-->
+                <!--                              android:layout_height="wrap_content"-->
+                <!--                              android:orientation="horizontal"-->
+
+
+                <!--                              android:layout_marginLeft="20dp"-->
+                <!--                              android:layout_marginRight="20dp"-->
+                <!--                              >-->
+                <!--                              <ImageView-->
+                <!--                                  android:layout_width="35dp"-->
+                <!--                                  android:layout_height="50dp"-->
+                <!--                                  android:src="@drawable/ic_profile"-->
+                <!--                                  android:layout_marginLeft="10dp"-->
+                <!--                                  />-->
+                <!--                              <TextView-->
+                <!--                                  android:layout_width="match_parent"-->
+                <!--                                  android:layout_height="40dp"-->
+                <!--                                  android:text="Profile"-->
+                <!--                                  android:textColor="#F1D8D8"-->
+                <!--                                  android:textSize="17dp"-->
+                <!--                                  android:layout_marginTop="13sp"-->
+                <!--                                  android:layout_marginLeft="10dp"-->
+                <!--                                  android:fontFamily="@font/reem_kufi"/>-->
+
+
+                <!--                          </LinearLayout>-->
+
+                <!--                          <View-->
+                <!--                              android:layout_width="match_parent"-->
+                <!--                              android:layout_height="1.5dp"-->
+                <!--                              android:background="#63BE9F9F"-->
+                <!--                              android:layout_marginRight="14dp"-->
+                <!--                              android:layout_marginLeft="14dp"-->
+                <!--                              android:layout_marginTop="10dp"-->
+
+                <!--                              />-->
+
+                <!--                          <LinearLayout-->
+                <!--                              android:layout_width="match_parent"-->
+                <!--                              android:layout_height="wrap_content"-->
+                <!--                              android:orientation="horizontal"-->
+
+                <!--                              android:layout_marginRight="20dp"-->
+                <!--                              >-->
+                <!--                              <ImageView-->
+                <!--                                  android:layout_width="35dp"-->
+                <!--                                  android:layout_height="45dp"-->
+                <!--                                  android:src="@drawable/ic_trans_his"-->
+                <!--                                  android:layout_marginLeft="35dp"-->
+                <!--                                  />-->
+                <!--                              <TextView-->
+                <!--                                  android:layout_width="match_parent"-->
+                <!--                                  android:layout_height="40dp"-->
+                <!--                                  android:text="Transaction History"-->
+                <!--                                  android:textColor="#F1D8D8"-->
+                <!--                                  android:textSize="13sp"-->
+                <!--                                  android:layout_marginTop="12dp"-->
+                <!--                                  android:layout_marginLeft="10dp"-->
+                <!--                                  android:fontFamily="@font/reem_kufi"/>-->
+
+
+                <!--                          </LinearLayout>-->
+
+                <!--                          <View-->
+                <!--                              android:layout_width="match_parent"-->
+                <!--                              android:layout_height="1.5dp"-->
+                <!--                              android:background="#63BE9F9F"-->
+                <!--                              android:layout_marginRight="14dp"-->
+                <!--                              android:layout_marginLeft="14dp"-->
+                <!--                              android:layout_marginTop="10dp"-->
+
+                <!--                              />-->
+
+                <!--                          <LinearLayout-->
+                <!--                              android:layout_width="match_parent"-->
+                <!--                              android:layout_height="wrap_content"-->
+                <!--                              android:orientation="horizontal"-->
+
+                <!--                              android:layout_marginLeft="20dp"-->
+                <!--                              android:layout_marginRight="20dp"-->
+                <!--                              >-->
+                <!--                              <ImageView-->
+                <!--                                  android:layout_width="35dp"-->
+                <!--                                  android:layout_height="50dp"-->
+                <!--                                  android:src="@drawable/ic_rides"-->
+                <!--                                  android:layout_marginLeft="16dp"-->
+                <!--                                  />-->
+                <!--                              <TextView-->
+                <!--                                  android:layout_width="match_parent"-->
+                <!--                                  android:layout_height="40dp"-->
+                <!--                                  android:text="Recent Rides"-->
+                <!--                                  android:textColor="#F1D8D8"-->
+                <!--                                  android:textSize="13sp"-->
+                <!--                                  android:layout_marginTop="14dp"-->
+                <!--                                  android:layout_marginLeft="10dp"-->
+                <!--                                  android:fontFamily="@font/reem_kufi"/>-->
+
+
+                <!--                          </LinearLayout>-->
+
+
+
+
+
+                <!--                      </LinearLayout>-->
+
+
+            </ScrollView>
+
+
+
+
+
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
+
+
+
+</LinearLayout>
