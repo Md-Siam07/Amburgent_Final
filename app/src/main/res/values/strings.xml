@@ -4,4 +4,5 @@
     <string name="fb_login_protocol_scheme">fb383902972761324</string>
     <string name="navigation_drawer_open">open_nav</string>
     <string name="navigation_drawer_close">close_nav</string>
+    <string name="title_activity_google_map_fragment">Map</string>
 </resources>

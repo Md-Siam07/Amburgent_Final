@@ -1,7 +1,6 @@
 package com.example.amburgent;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -12,12 +11,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.facebook.login.LoginManager;
 import com.google.android.material.navigation.NavigationView;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import androidx.appcompat.widget.Toolbar;
-import com.google.android.material.navigation.NavigationView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity2 extends AppCompatActivity {
 
@@ -56,13 +55,24 @@ public class MainActivity2 extends AppCompatActivity {
             }
                 return true;
             }
-        });
 
+        });
+        Fragment mapsFragment = new GoogleMapFragment();
+        initialize_all();
         //FirebaseApp.initializeApp(getApplicationContext());
        
 
     }
 
+    public void initialize_all()
+    {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        GoogleMapFragment obj = new GoogleMapFragment();
+        fragmentTransaction.replace(R.id.frame_layout_replace,obj);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
 
     public void log_out(View view) {
 
