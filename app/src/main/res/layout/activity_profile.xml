@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile"
+    android:orientation="vertical"
+    android:background="@drawable/profibg"
+    android:weightSum="7"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.6"
+        android:gravity="bottom"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_user_icon"
+            android:layout_marginRight="240dp"
+            android:id="@+id/img_prof"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.8"
+        android:orientation="vertical"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_usernameprof"
+           android:layout_marginTop="80dp"
+            android:layout_marginLeft="40dp"
+            android:padding="10dp"
+            android:layout_marginRight="40dp"
+            android:textSize="16sp"
+            android:hint="Username"
+            android:fontFamily="@font/reem_kufi"
+            android:paddingStart="65dp"
+            android:textColor="#423D3D"
+            android:id="@+id/username_prof"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#75332B2B"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_phone_prof"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="40dp"
+            android:padding="10dp"
+            android:layout_marginRight="40dp"
+            android:textSize="16sp"
+            android:hint="Phone Number"
+            android:fontFamily="@font/reem_kufi"
+            android:paddingStart="65dp"
+            android:textColor="#423D3D"
+            android:id="@+id/phone_num_prof"
+
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#75332B2B"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginRight="40dp"
+            android:background="@drawable/ic_mailprof"
+            android:fontFamily="@font/reem_kufi"
+            android:hint="Email Address"
+            android:padding="10dp"
+            android:paddingStart="65dp"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:id="@+id/email_prof"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+
+        >
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_done"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginRight="120dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="done"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>
+
+
+
+

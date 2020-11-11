@@ -34,19 +34,26 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignUppage extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 123 ;
     EditText user,phone;
     Button withFb,withGoog,sign_in;
-    String phoneNumber;
+    String phoneNumber="",str,username="",email="",photoUrl="",UserID;
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private CallbackManager mCallbackManager;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseFirestore db=FirebaseFirestore.getInstance();
+    Map<String,Object> mp = new HashMap<>();
 
 
 
@@ -71,6 +78,7 @@ public class SignUppage extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         findViewById(R.id.google_sign).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                str = "google";
                 signIn();
             }
 
@@ -78,8 +86,10 @@ public class SignUppage extends AppCompatActivity {
 
 
         withFb.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                str = "fb";
                 mCallbackManager = CallbackManager.Factory.create();
                 LoginManager login_manager= LoginManager.getInstance();
                 login_manager.logInWithReadPermissions(SignUppage.this, Arrays.asList("email", "public_profile"));
@@ -109,12 +119,15 @@ public class SignUppage extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                    if(user!=null){
-                        Intent intent =new Intent(getApplicationContext(),MainActivity2.class);
-                        startActivity(intent);
-                    }
+                if(user!=null){
 
-                 else {
+
+                    Intent intent =new Intent(getApplicationContext(),MainActivity2.class);
+                    intent.putExtra("code",str);
+                    startActivity(intent);
+                }
+
+                else {
 
 
                 }
@@ -181,8 +194,16 @@ public class SignUppage extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
 
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent =new Intent(getApplicationContext(),MainActivity2.class);
-                            startActivity(intent);
+                            if(user!=null) {
+                                updateUI_google(user);
+
+                                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                                //for indentifying fb and google
+                                intent.putExtra("code", str);
+                                intent.putExtra("id", user.getUid().toString());
+
+                                startActivity(intent);
+                            }
                         }
 
                         else {
@@ -207,8 +228,14 @@ public class SignUppage extends AppCompatActivity {
                 {
 
                     FirebaseUser user = mAuth.getCurrentUser();
-                    Intent intent =new Intent(getApplicationContext(),MainActivity2.class);
-                    startActivity(intent);
+                    if(user!=null) {
+                        updateUI_fb(user);
+
+                        Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+                        intent.putExtra("code", str);
+                        intent.putExtra("id", user.getUid().toString());
+                        startActivity(intent);
+                    }
                 }
                 else
                 {
@@ -232,11 +259,53 @@ public class SignUppage extends AppCompatActivity {
         //you have to add country code
         phoneNumber ="+88"+phone.getText().toString();
 
+
         Intent intent = new Intent(getApplicationContext(), OTPpage.class);
         intent.putExtra("phoneNumber",phoneNumber);
+        intent.putExtra("name",user.getText().toString());
         startActivity(intent);
     }
 
+    private void updateUI_fb(FirebaseUser user){
+        username = user.getDisplayName();
+        if(user.getEmail()!=null){
+            email = user.getEmail();
+        }
+
+        if(user.getPhotoUrl()!=null){
+            photoUrl = user.getPhotoUrl().toString();
+        }
+        addToMap(user.getUid());
+
+    }
+
+    private void updateUI_google(FirebaseUser user){
+
+        username = user.getDisplayName();
+        email = user.getEmail();
+        photoUrl = user.getPhotoUrl().toString();
+
+        addToMap(user.getUid());
+
+    }
+
+
+
+    private void addToMap(String id) {
+        mp.put("Username",username);
+        mp.put("Email",email);
+        mp.put("Phone",phoneNumber);
+        mp.put("PhotoUrl",photoUrl);
+        mp.put("code",str);
+        db.collection("users").document(id).set(mp)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        Toast.makeText(getApplicationContext(),"Data Saved",Toast.LENGTH_LONG).show();
+                    }
+                });
+    }
 
 
 }

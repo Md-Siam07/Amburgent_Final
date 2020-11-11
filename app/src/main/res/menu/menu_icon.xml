@@ -47,7 +47,17 @@
         android:checkableBehavior="single">
         <item android:id="@+id/contact_item"
             android:icon="@drawable/ic_contacts"
-            android:title="About Contacts"
+            android:title="Contacts"
+            >
+
+        </item>
+    </group>
+
+    <group android:id="@+id/abour"
+        android:checkableBehavior="single">
+        <item android:id="@+id/about_item"
+            android:icon="@drawable/ic_about"
+            android:title="About"
             >
 
         </item>

@@ -15,16 +15,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class OTPpage extends AppCompatActivity {
 
     Pinview pin;
-    String phoneNumber,otpID,Otp;
+    String phoneNumber,otpID,Otp,name;
     FirebaseAuth mAuth;
+    private FirebaseFirestore db=FirebaseFirestore.getInstance();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +39,13 @@ public class OTPpage extends AppCompatActivity {
             @Override
             public void onDataEntered(Pinview pinview, boolean fromUser) {
                 Otp = pin.getValue().toString();
-               // Toast.makeText(getApplicationContext(),otpID,Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(),otpID,Toast.LENGTH_LONG).show();
             }
         });
         Intent intent = getIntent();
         phoneNumber =   intent.getStringExtra("phoneNumber");
+        name = intent.getStringExtra("name");
         mAuth   =   FirebaseAuth.getInstance();
-
         getOTP();
 
 
@@ -75,7 +80,10 @@ public class OTPpage extends AppCompatActivity {
                     @Override
                     public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(s, forceResendingToken);
+
                         otpID   =   s;
+                        Toast.makeText(getApplicationContext(),"OTP"+otpID,Toast.LENGTH_LONG).show();
+                        System.out.println(otpID);
                     }
 
                     @Override
@@ -96,13 +104,35 @@ public class OTPpage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            updateUI_phone(mAuth.getCurrentUser());
                             Intent intent   =   new Intent(getApplicationContext(),MainActivity2.class);
                             startActivity(intent);
+                            finish();
 
                         } else {
 
                             Toast.makeText(getApplicationContext(),"OTP ENTERED IS NOT CORRECT",Toast.LENGTH_LONG).show();
                         }
+                    }
+                });
+    }
+    private void updateUI_phone(FirebaseUser user){
+
+        Map<String,Object> mp = new HashMap<>();
+        String photoUrl ="";
+        String email= "";
+        mp.put("Username",name);
+        mp.put("Email",email);
+        mp.put("Phone",phoneNumber);
+        mp.put("PhotoUrl",photoUrl);
+        mp.put("code","phone");
+
+        db.collection("users").document(user.getUid().toString()).set(mp)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        Toast.makeText(getApplicationContext(),"Data Saved",Toast.LENGTH_LONG).show();
                     }
                 });
     }
