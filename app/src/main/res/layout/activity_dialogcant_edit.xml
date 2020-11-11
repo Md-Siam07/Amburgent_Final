@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".DialogcantEdit"
+    android:background="#000000"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:src="@drawable/ic_alert"
+        android:layout_marginTop="30dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sorry you cannot edit this field"
+        android:textSize="16sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="100dp"
+        android:textColor="#D1C2C2"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="140dp"
+        android:layout_marginRight="130dp"
+        android:background="#52A59898"
+        android:layout_marginBottom="30dp"
+        android:textSize="12sp"
+        android:text="DISMISS"
+        android:textColor="@color/white"/>
+
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginRight="50dp"
+    android:layout_marginLeft="50dp"
+    android:layout_height="170dp"
+    tools:context=".DialogcantEdit"
+    android:background="#F5000000"
+    android:orientation="vertical"
+   >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_success"
+        android:layout_marginTop="10dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CONGRATS"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+        android:textStyle="bold"
+        android:fontFamily="@font/reem_kufi"
+        android:textColor="#D1C2C2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your profile has been updated successfully"
+        android:textSize="12sp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="@font/reem_kufi"
+        android:textColor="#D1C2C2"
+        android:layout_marginBottom="30dp"/>
+<!--    <Button-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:layout_marginLeft="140dp"-->
+<!--        android:layout_marginRight="130dp"-->
+<!--        android:background="#52A59898"-->
+<!--        android:layout_marginBottom="30dp"-->
+<!--        android:textSize="12sp"-->
+<!--        android:text="DISMISS"-->
+<!--        android:textColor="@color/white"/>-->
+
+
+</LinearLayout>
