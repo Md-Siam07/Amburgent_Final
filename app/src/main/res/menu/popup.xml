@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/pfpshow_item"
-        android:icon="@drawable/ic_uploadpfp"
-        android:title="Show Profile Picture"
-        >
-    </item>
+
 
     <item android:id="@+id/pfpupload_item"
         android:icon="@drawable/ic_showpfp"
-        android:title="Upload Profile Picture"
+        android:title="Change Profile Picture"
         >
     </item>
 

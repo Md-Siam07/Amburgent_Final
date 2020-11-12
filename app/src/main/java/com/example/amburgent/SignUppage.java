@@ -40,6 +40,7 @@ import java.util.Map;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignUppage extends AppCompatActivity {
@@ -267,6 +268,8 @@ public class SignUppage extends AppCompatActivity {
     }
 
     private void updateUI_fb(FirebaseUser user){
+
+
         username = user.getDisplayName();
         if(user.getEmail()!=null){
             email = user.getEmail();
@@ -292,20 +295,34 @@ public class SignUppage extends AppCompatActivity {
 
 
     private void addToMap(String id) {
-        mp.put("Username",username);
-        mp.put("Email",email);
-        mp.put("Phone",phoneNumber);
-        mp.put("PhotoUrl",photoUrl);
-        mp.put("code",str);
-        db.collection("users").document(id).set(mp)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
 
-                        Toast.makeText(getApplicationContext(),"Data Saved",Toast.LENGTH_LONG).show();
+        DocumentReference docRef = db.collection("users").document(id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        return;
+                    } else {
+                        mp.put("Username", username);
+
+                        mp.put("Email", email);
+                        mp.put("Phone", phoneNumber);
+                        mp.put("PhotoUrl", photoUrl);
+                        mp.put("code", str);
+                        db.collection("users").document(id).set(mp)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                        Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_LONG).show();
+                                    }
+                                });
                     }
-                });
+                }
+            }
+        });
     }
-
 
 }

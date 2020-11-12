@@ -18,6 +18,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -116,26 +118,42 @@ public class OTPpage extends AppCompatActivity {
                     }
                 });
     }
-    private void updateUI_phone(FirebaseUser user){
+    private void updateUI_phone(FirebaseUser user) {
 
-        Map<String,Object> mp = new HashMap<>();
-        String photoUrl ="";
-        String email= "";
-        mp.put("Username",name);
-        mp.put("Email",email);
-        mp.put("Phone",phoneNumber);
-        mp.put("PhotoUrl",photoUrl);
-        mp.put("code","phone");
+        Map<String, Object> mp = new HashMap<>();
 
-        db.collection("users").document(user.getUid().toString()).set(mp)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
+        DocumentReference docRef = db.collection("users").document(user.getUid().toString());
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        return;
+                    } else {
 
-                        Toast.makeText(getApplicationContext(),"Data Saved",Toast.LENGTH_LONG).show();
+                        String photoUrl = "";
+                        String email = "";
+                        mp.put("Username", name);
+                        mp.put("Email", email);
+                        mp.put("Phone", phoneNumber);
+                        mp.put("PhotoUrl", photoUrl);
+                        mp.put("code", "phone");
+
+                        db.collection("users").document(user.getUid().toString()).set(mp)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+
+                                        Toast.makeText(getApplicationContext(), "Data Saved", Toast.LENGTH_LONG).show();
+                                    }
+                                });
                     }
-                });
+                }
+            }
+        });
     }
+
 
 
 
