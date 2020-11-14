@@ -84,7 +84,7 @@ public class OTPpage extends AppCompatActivity {
                         super.onCodeSent(s, forceResendingToken);
 
                         otpID   =   s;
-                        Toast.makeText(getApplicationContext(),"OTP"+otpID,Toast.LENGTH_LONG).show();
+                      //  Toast.makeText(getApplicationContext(),"OTP"+otpID,Toast.LENGTH_LONG).show();
                         System.out.println(otpID);
                     }
 
@@ -123,14 +123,7 @@ public class OTPpage extends AppCompatActivity {
         Map<String, Object> mp = new HashMap<>();
 
         DocumentReference docRef = db.collection("users").document(user.getUid().toString());
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        return;
-                    } else {
+
 
                         String photoUrl = "";
                         String email = "";
@@ -150,9 +143,6 @@ public class OTPpage extends AppCompatActivity {
                                 });
                     }
                 }
-            }
-        });
-    }
 
 
 
@@ -161,4 +151,6 @@ public class OTPpage extends AppCompatActivity {
 
 
 
-}
+
+
+

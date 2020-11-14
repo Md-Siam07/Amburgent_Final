@@ -128,13 +128,14 @@ public class Profile extends AppCompatActivity {
     public void done(android.view.View view) {
 
         if(!code.equals("google")){
-            emailProf.setText(changed_email);
+
             changed_email = emailProf.getText().toString();
             emailProf.setText(changed_email);
         }
         else{
             changed_email = email;
         }
+
 
         if(!code.equals("phone")){
             changed_phone = phoneProf.getText().toString();
